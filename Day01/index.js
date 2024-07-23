@@ -33,10 +33,11 @@ function flatten(obj){
 
 }
 
+
  console.log(flatten(obj));
 
 
-// -->> Array Destructuring
+// -->> Array Destructuring..
 
 const arr=[1,2,3,4,5]
 
