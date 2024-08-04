@@ -1,3 +1,6 @@
+--> JS fundamentals
+
+
 
 //var can be redeclared
 var a=10;
