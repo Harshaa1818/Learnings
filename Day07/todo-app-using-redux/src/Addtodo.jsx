@@ -1,27 +1,50 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeTodo } from "./redux/slices/TodoSlice";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addTodo } from './redux/slices/TodoSlice'
 
 function Addtodo() {
-  const [data, setData] = useState("");
-  const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const [input,setInput]=useState("")
+  const dispatch=useDispatch()
+
+  const addHandler=(e)=>{
+
+    e.preventDefault();
+    
+    dispatch(addTodo(input));
+
+    setInput("")
+    
+
+  }
 
   return (
-    <form>
-      <div>
-        Add Todos: <input onChange={(e) => setData(e.target.value)} />
-        <button onClick={() => dispatch(addTodo(data))}> Submit</button>
-      </div>
-      <div>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            Title: {todo.name}
-          </li>
-        ))}
-      </div>
+    <form onSubmit={addHandler} style={{ display: 'flex', marginBottom: '1rem' }}>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        style={{
+          padding: '0.5rem',
+          marginRight: '0.5rem',
+          border: 'none',
+          borderRadius: '4px',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        }}
+      />
+      <button
+        style={{
+          padding: '0.5rem 1rem',
+          border: 'none',
+          borderRadius: '4px',
+          background: '#4caf50',
+          color: '#fff',
+          cursor: 'pointer',
+        }}
+      >
+        Add todo
+      </button>
     </form>
   );
 }
 
-export default Addtodo;
+export default Addtodo
+
