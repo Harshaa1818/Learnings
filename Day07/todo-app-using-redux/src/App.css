@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.spcl-div{
+  margin: 3px;
+  display: flex;
+  align-items: center ;
+  margin-left: 40px 
+}
