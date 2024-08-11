@@ -6,28 +6,33 @@ function FetchApi() {
     
     const dispatch=useDispatch();
 
-    const data=useSelector(state=>state)
+    const data=useSelector(state=>state.fetch)
 
     const [flag,setFlag]=useState(true)
 
     const handler=()=>{
         dispatch(fetchthunk());
+
+        console.log(data)
         setFlag(false)
 
     }
    
-
+   
   
   return (
     <>
-   <ul>
-    {data.fetch.products ? data.fetch.products.map((e)=>{
-        <li key={e.id}>
-        {e.title}
-        </li>
-    }):<></>} 
-    </ul>
-      {flag && <button onClick={handler}>Fetch API</button>}
+
+  
+    {data.isLoading ??<>Loading..</>}
+    
+     {flag ? <button onClick={handler}>Fetch API</button>:<>
+     { data.products && data.products.map((e)=>(
+        <div key={e.id}>
+       <div>{e.title}</div> 
+        </div>
+    ))} 
+     </>}
       </>
    
   )
